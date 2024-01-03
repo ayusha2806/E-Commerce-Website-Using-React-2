@@ -6,7 +6,7 @@ import Header from './Header/Header';
 import Cart from './Cart/Cart';
 import Product from './Product';
 import AboutUs from './AboutUs';
-import Store from './Store';
+import Home from './Home';
 import Heading from './Header/Heading';
 
 
@@ -25,7 +25,7 @@ const App = () => {
                 <Product title="Yellow and Black Colors" price={70} imageUrl="https://prasadyash2411.github.io/ecom-website/img/Album%203.png" />
               </div>} />
               <Route path="/about" element={<AboutUs />} />
-              <Route path="/store" element={<Store />} />
+              <Route path="/home" element={<Home />} />
             </Routes>
           </div>
           <Cart />

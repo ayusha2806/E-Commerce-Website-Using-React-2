@@ -15,10 +15,10 @@ const Header = () => {
     <div className="container-fluid bg-dark text-light py-3">
       <div className="row d-flex align-items-center justify-content-between">
         <div className="col-auto">
-          <Link to='/' className="text-light text-decoration-none">Home</Link>
+          <Link to='/' className="text-light text-decoration-none">Store</Link>
         </div>
         <div className="col-auto">
-          <Link to='/store' className="text-light text-decoration-none">Store</Link>
+          <Link to='/home' className="text-light text-decoration-none">Home</Link>
         </div>
         <div className="col-auto">
           <Link to='/about' className="text-light text-decoration-none">About</Link>
