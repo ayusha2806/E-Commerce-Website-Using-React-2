@@ -4,7 +4,6 @@ import { useCart } from '../CartContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 
-
 const Header = () => {
   const { toggleCart, cartItems } = useCart();
 
@@ -24,12 +23,14 @@ const Header = () => {
           <Link to='/about' className="text-light text-decoration-none">About</Link>
         </div>
         <div className="col-auto">
+          <Link to='/contactus' className="text-light text-decoration-none">Contact Us</Link>
+        </div>
+        <div className="col-auto">
           <button className="btn btn-outline-light" onClick={toggleCart}>
             CART {totalQuantity > 0 && <span className="badge bg-danger">{totalQuantity}</span>}
           </button>
         </div>
       </div>
-      
     </div>
   );
 };

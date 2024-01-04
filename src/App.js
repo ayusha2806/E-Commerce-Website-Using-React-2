@@ -8,7 +8,7 @@ import Product from './Product';
 import AboutUs from './AboutUs';
 import Home from './Home';
 import Heading from './Header/Heading';
-
+import ContactUs from './ContactUs';// Import the ContactUs component
 
 const App = () => {
   return (
@@ -24,8 +24,9 @@ const App = () => {
                 <Product title="Black and white Colors" price={50} imageUrl="https://prasadyash2411.github.io/ecom-website/img/Album%202.png" />
                 <Product title="Yellow and Black Colors" price={70} imageUrl="https://prasadyash2411.github.io/ecom-website/img/Album%203.png" />
               </div>} />
-              <Route path="/about" element={<AboutUs />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contactus" element={<ContactUs />} /> {/* Add a new route for ContactUs */}
             </Routes>
           </div>
           <Cart />
