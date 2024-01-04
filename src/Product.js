@@ -1,5 +1,6 @@
 // Product.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useCart } from './CartContext';
 
 const Product = ({ title, price, imageUrl }) => {
@@ -10,19 +11,25 @@ const Product = ({ title, price, imageUrl }) => {
       title,
       price,
       imageUrl,
-      quantity: 1, // Set initial quantity to 1
+      quantity: 1,
     });
   };
 
   return (
     <div className="col-md-4 mb-3">
-      <div className="product">
-        <img src={imageUrl} alt={title} />
-        <h3>{title}</h3>
-        <p>₹{price}</p>
-        <button className="btn btn-primary" onClick={handleAddToCart}>
-          Add To Cart
-        </button>
+      <div className="card">
+        <Link to={`/product/${encodeURIComponent(title)}`} className="text-decoration-none text-dark">
+          <img src={imageUrl} alt={title} className="card-img-top" />
+          <div className="card-body">
+            <h5 className="card-title">{title}</h5>
+            <p className="card-text">₹{price}</p>
+          </div>
+        </Link>
+        <div className="card-footer">
+          <button className="btn btn-primary" onClick={handleAddToCart}>
+            Add To Cart
+          </button>
+        </div>
       </div>
     </div>
   );

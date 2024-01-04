@@ -7,8 +7,33 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
 
+  const findProductIndex = (title) => {
+    return cartItems.findIndex((item) => item.title === title);
+  };
+
   const addToCart = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
+    const productIndex = findProductIndex(item.title);
+
+    if (productIndex !== -1) {
+      // Product already exists in the cart, update quantity
+      const updatedCartItems = [...cartItems];
+      updatedCartItems[productIndex].quantity += item.quantity;
+      setCartItems(updatedCartItems);
+    } else {
+      // Product is not in the cart, add a new entry
+      setCartItems((prevItems) => [...prevItems, item]);
+    }
+  };
+
+  const removeItem = (title) => {
+    const productIndex = findProductIndex(title);
+
+    if (productIndex !== -1) {
+      // Product found in the cart, remove it
+      const updatedCartItems = [...cartItems];
+      updatedCartItems.splice(productIndex, 1);
+      setCartItems(updatedCartItems);
+    }
   };
 
   const toggleCart = () => {
@@ -16,7 +41,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, showCart, toggleCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeItem, showCart, toggleCart }}>
       {children}
     </CartContext.Provider>
   );
