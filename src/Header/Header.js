@@ -1,13 +1,13 @@
-// Header.js
 import React from "react";
 import { useCart } from '../CartContext';
+import { useAuth } from '../AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const { toggleCart, cartItems } = useCart();
+  const { token } = useAuth();
 
-  // Calculate total quantity in the cart
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
@@ -15,6 +15,9 @@ const Header = () => {
       <div className="row d-flex align-items-center justify-content-between">
         <div className="col-auto">
           <Link to='/' className="text-light text-decoration-none">Store</Link>
+        </div>
+        <div className="col-auto">
+          <Link to='/login' className="text-light text-decoration-none">Login</Link>
         </div>
         <div className="col-auto">
           <Link to='/home' className="text-light text-decoration-none">Home</Link>

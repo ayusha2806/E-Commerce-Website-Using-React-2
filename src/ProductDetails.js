@@ -18,8 +18,8 @@ const ProductDetail = () => {
         'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
       ],
       reviews: [
-        { id: 1, user: 'User1', comment: 'Great product!', rating: 5 },
-        { id: 2, user: 'User2', comment: 'Good quality.', rating: 4 },
+        { id: 1, user: 'Ayush', comment: 'Great product!', rating: 5 },
+        { id: 2, user: 'Sheru', comment: 'Good quality.', rating: 4 },
         // Add more reviews as needed
       ],
     };
