@@ -1,4 +1,3 @@
-// CartContext.js
 import React, { createContext, useContext, useState } from 'react';
 
 const CartContext = createContext();
@@ -15,12 +14,10 @@ export const CartProvider = ({ children }) => {
     const productIndex = findProductIndex(item.title);
 
     if (productIndex !== -1) {
-      // Product already exists in the cart, update quantity
       const updatedCartItems = [...cartItems];
       updatedCartItems[productIndex].quantity += item.quantity;
       setCartItems(updatedCartItems);
     } else {
-      // Product is not in the cart, add a new entry
       setCartItems((prevItems) => [...prevItems, item]);
     }
   };
@@ -29,7 +26,6 @@ export const CartProvider = ({ children }) => {
     const productIndex = findProductIndex(title);
 
     if (productIndex !== -1) {
-      // Product found in the cart, remove it
       const updatedCartItems = [...cartItems];
       updatedCartItems.splice(productIndex, 1);
       setCartItems(updatedCartItems);

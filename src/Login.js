@@ -12,7 +12,7 @@ const Login = () => {
     password: '',
   });
 
-  const [loginError, setLoginError] = useState(null); // New error state
+  const [loginError, setLoginError] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -63,13 +63,18 @@ const Login = () => {
   return (
     <div className="container mt-5">
       <h2>Login</h2>
+      {loginError && (
+        <div className="alert alert-danger" role="alert">
+          {loginError}
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email</label>
           <input type="email" className="form-control" id="email" onChange={handleChange} value={formData.email} required />
         </div>
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">Password</label>
+          <label htmlFor="password" className="form-label">Password</label>
           <input type="password" className="form-control" id="password" onChange={handleChange} value={formData.password} required />
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
