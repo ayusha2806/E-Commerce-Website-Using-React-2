@@ -28,15 +28,12 @@ const Header = () => {
   );
 
   const handleStoreClick = () => {
-    if (!isLoggedIn) {
+    // Redirect to login page only if not logged in and trying to access the store
+    if (!isLoggedIn && location.pathname === "/") {
       alert("Please login first!");
       navigate("/login");
-    } else {
-      navigate("/");
     }
   };
-
-  const isStorePage = location.pathname === "/"; // Adjust the path as per your store page
 
   return (
     <div className="container-fluid bg-dark text-light py-3">
@@ -45,6 +42,7 @@ const Header = () => {
           <Link
             to={isLoggedIn ? "/" : "/login"}
             className="text-light text-decoration-none"
+            onClick={handleStoreClick}
           >
             Store
           </Link>
@@ -77,16 +75,6 @@ const Header = () => {
             )}
           </button>
         </div>
-        {isStorePage && (
-          <div className="col-auto">
-            <button
-              className="btn btn-outline-light"
-              onClick={handleStoreClick}
-            >
-              Store
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

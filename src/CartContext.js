@@ -1,10 +1,23 @@
-import React, { createContext, useContext, useState } from 'react';
+// CartContext.js
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
+  // Local storage se cart restore karne ke liye useEffect ka use kiya gaya hai
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart));
+    }
+  }, []);
+
   const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
+
+  const updateLocalStorage = (updatedCart) => {
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
 
   const findProductIndex = (title) => {
     return cartItems.findIndex((item) => item.title === title);
@@ -17,8 +30,10 @@ export const CartProvider = ({ children }) => {
       const updatedCartItems = [...cartItems];
       updatedCartItems[productIndex].quantity += item.quantity;
       setCartItems(updatedCartItems);
+      updateLocalStorage(updatedCartItems);
     } else {
       setCartItems((prevItems) => [...prevItems, item]);
+      updateLocalStorage([...cartItems, item]);
     }
   };
 
@@ -29,6 +44,7 @@ export const CartProvider = ({ children }) => {
       const updatedCartItems = [...cartItems];
       updatedCartItems.splice(productIndex, 1);
       setCartItems(updatedCartItems);
+      updateLocalStorage(updatedCartItems);
     }
   };
 
